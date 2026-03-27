@@ -85,20 +85,8 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: dia_log_book_production
-    username: dia_log_book
-    password: <%= ENV["DIA_LOG_BOOK_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: dia_log_book_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: dia_log_book_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: dia_log_book_production_cable
-    migrations_paths: db/cable_migrate
+  adapter: postgresql
+  encoding: unicode
+  # ここが魔法の一行。RenderのDATABASE_URLを直接読み込みます
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
