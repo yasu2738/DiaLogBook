@@ -1,0 +1,19 @@
+current directory: /home/yusuke/DiaLogBook/vendor/bundle/ruby/3.2.0/gems/stringio-3.2.0/ext/stringio
+/home/yusuke/.anyenv/envs/rbenv/versions/3.2.2/bin/ruby extconf.rb
+checking for rb_io_mode_t in ruby/io.h... no
+creating Makefile
+
+current directory: /home/yusuke/DiaLogBook/vendor/bundle/ruby/3.2.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260319-1029-50te0t sitelibdir\=./.gem.20260319-1029-50te0t clean
+
+current directory: /home/yusuke/DiaLogBook/vendor/bundle/ruby/3.2.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260319-1029-50te0t sitelibdir\=./.gem.20260319-1029-50te0t
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /home/yusuke/DiaLogBook/vendor/bundle/ruby/3.2.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260319-1029-50te0t sitelibdir\=./.gem.20260319-1029-50te0t install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20260319-1029-50te0t
+
+current directory: /home/yusuke/DiaLogBook/vendor/bundle/ruby/3.2.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260319-1029-50te0t sitelibdir\=./.gem.20260319-1029-50te0t clean

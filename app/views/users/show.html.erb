@@ -1,0 +1,42 @@
+<h1>MyPage For <%= @user.fullname %></h1>
+
+<%#先生でログインしたら生徒のリンクを表示する%>
+<%if @students != nil %>
+  <p>
+    <% @students.each do |st|
+      color = @updated_users.include?(st.id) \
+             ? 'btn btn-warning' : 'btn btn-light' %> 
+      <%= link_to st.fullname, user_path(st.id), class: color %>
+    <% end %>
+  </p>
+<% end %>
+
+<%#新しい投稿の作成フォーム%>
+<div class="form-group">
+  <%= form_with model: Post.new do |f| %>
+    <%= f.text_area :body, placeholder: "Add your comment",
+      class: 'form-control mb-3', rows: 10 %>
+    <%= f.hidden_field :id, { value: @user.id } %>
+    <%= f.submit 'submit', class: 'btn btn-primary mb-4' %>
+  <% end %>
+</div>
+
+<%#Postがあれば降順に並べて表示する%>
+<% if @posts != nil %>
+  <% l = @posts.length%>
+  <% @posts.each_with_index do |post, i|
+    submitter = User.find_by(id: post.submitter)
+    sname = (submitter != nil) ? submitter.fullname : 'Anonymous' %>
+   <div class="card">
+      <div class="card-header">
+        <%= (l-i).to_s + " : " %>
+        <%= (submitter != nil) ? (link_to sname, user_path(submitter), class: 'text-info') : 'Anonymous' %>
+        <%= post.created_at.to_s %></div>
+      <div class="card-body">
+        <%= simple_format(h(post.body)) %></div>
+    </div>
+  <% end %>
+  <br />
+  <%= paginate @posts %>
+  <br />
+<% end %>
